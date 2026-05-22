@@ -1,3 +1,7 @@
 [submodule "Test_Explore/autogpt_agent_testcodegen"]
 	path = Test_Explore/autogpt_agent_testcodegen
 	url = https://github.com/ayushmittalde/autogpt_agent_testcodegen.git
+
+[submodule "Test_Explore/autogpt_codebase_rp"]
+	path = Test_Explore/autogpt_codebase_rp
+	url = https://github.com/ayushmittalde/autogpt_codebase_rp.git
