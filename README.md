@@ -19,7 +19,6 @@
 
 </div>
 
----
 
 ## What This Project Is
 
@@ -27,7 +26,6 @@ autotest-agent is a documentation-driven, LLM-assisted architecture for automate
 
 The prototype was implemented as an agentic workflow inside VS Code using GitHub Copilot and validated against the **AutoGPT platform** — an open-source AI agent builder whose capabilities are described through documentation rather than a machine-readable schema. The research project was submitted at the University of Stuttgart (Institute of Industrial Automation and Software Engineering) as FA 3910 under the supervison of Akshay Narla, M.Sc.
 
----
 
 ## Table of Contents
 
@@ -47,7 +45,6 @@ The prototype was implemented as an agentic workflow inside VS Code using GitHub
 - [Related Repositories](#related-repositories)
 - [License](#license)
 
----
 
 ## Key Learnings & Insights
 
@@ -67,7 +64,6 @@ The prototype was implemented as an agentic workflow inside VS Code using GitHub
 
 - **Separation of concerns at the prompt level prevents LLM reinterpretation drift.** Assigning a single responsibility to each prompt file — documentation analysis, representation generation, test synthesis, execution reporting — ensures that downstream stages operate on fully specified, expert-reviewed artifacts rather than subtly different reinterpretations of the same source documentation.
 
----
 
 ## Features
 
@@ -91,7 +87,6 @@ The prototype was implemented as an agentic workflow inside VS Code using GitHub
 
 - **Automated Execution Reports** — Phase 4 produces a stakeholder-ready findings report with per-test PASS/FAIL/SKIP/TIMEOUT/ERROR/BLOCKED status, full coverage traceability back to source requirements, and a validation subagent that independently verifies all counts and traceability entries before the report is finalized.
 
----
 
 ## Architecture Overview
 
@@ -167,7 +162,6 @@ The Phase 3 prompt (`rep_to_test`) underwent four successive design iterations. 
 | V3 | Added mandatory live system exploration before any code synthesis; introduced "Documentation describes intent. Implementation IS reality." | Tests failing due to undocumented UI states, absent selectors, and navigation divergence |
 | V4 | Replaced MCP browser tools with `playwright-cli` terminal commands; introduced the Code Bank pattern, Snapshot Protocol, Selector Convention Mapping, and Execution Gate | Tests using selectors observed during exploration but translated incorrectly into test code |
 
----
 
 ## Evaluation Results
 
@@ -199,7 +193,6 @@ The nine documentation–implementation mismatches found across all features wer
 
 The divergence across models originated entirely in Phase 3 exploration strategy. When the Monitor Tab crashed and the documented delete flow became unreachable, Sonnet navigated to the Library page and discovered the actual implementation. Opus thoroughly documented the crash and attempted an API-level workaround but never questioned the documentation's premise. Codex stopped exploring entirely after two failed clicks and delivered only empty `test.skip()` bodies.
 
----
 
 ## Getting Started
 
@@ -276,7 +269,6 @@ Add the approved representation as context. Ensure AutoGPT is running at `http:/
 ```
 Add the generated test file, `coverage-report.md`, the representation document, and the original documentation as context. The agent executes the tests, parses results, and writes the final report to `report/execution-report-[feature]-[date].md`.
 
----
 
 ## Project Structure
 
@@ -348,7 +340,6 @@ autogpt_agent_testcodegen/
 └── tsconfig.json
 ```
 
----
 
 ## Tech Stack
 
@@ -362,7 +353,6 @@ autogpt_agent_testcodegen/
 | Installer | Windows Batch Scripts | Automated environment setup |
 | Primary Model | Claude Sonnet 4.6 | Recommended model for all four pipeline phases |
 
----
 
 ## Known Limitations
 
@@ -376,7 +366,6 @@ autogpt_agent_testcodegen/
 
 **Context window ceiling** — Phase 3 consumes up to 91–102k tokens per feature run. The effective upper bound for feature complexity is determined by the context window available to the active model in GitHub Copilot (160k tokens for Claude Sonnet 4.6 in the evaluated configuration).
 
----
 
 ## Related Repositories
 
@@ -385,13 +374,11 @@ autogpt_agent_testcodegen/
 | [autogpt_agent_testcodegen](https://github.com/ayushmittalde/autogpt_agent_testcodegen) | Testing repository — prompts, generated tests, docs, resources, and Playwright config |
 | [autogpt_codebase_rp](https://github.com/ayushmittalde/autogpt_codebase_rp) | Forked AutoGPT platform — the system under test deployed via Docker Compose |
 
----
 
 ## License
 
 No explicit open-source licence is applied at the project level. This repository contains artifacts from a University of Stuttgart research project (FA 3910). If you adapt or redistribute any content, ensure compliance with the licences of all transitive dependencies through the npm and Playwright dependency trees.
 
----
 
 <div align="center">
 
